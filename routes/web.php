@@ -39,8 +39,13 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
     Route::resource('/permissions' , PermissionController::class);
 });
 
-Route::get('/driver/dashboard', function () {    
-     return view('driver.dashboard');
-})->middleware(['auth','role:driver'])->name('driver.dashboard');
+// Route::get('/driver/dashboard', function () {    
+//      return view('driver.dashboard');
+// })->middleware(['auth','role:driver'])->name('driver.dashboard');
+
+
+Route::get('/driver', [driverController::class, 'index'])->name('driver.index');
+
+Route::get('/passenger', [passengerController::class, 'index'])->name('passenger.index');
 
 require __DIR__.'/auth.php';

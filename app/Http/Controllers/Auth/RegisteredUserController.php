@@ -44,6 +44,10 @@ class RegisteredUserController extends Controller
         if ($request->has('role_driver')) {
             $user->assignRole('driver');
         }
+
+        if ($request->has('role_passenger')) {
+            $user->assignRole('passenger');
+        }
           
 
         event(new Registered($user));

@@ -7,8 +7,8 @@
         
             <label for="role" class="block text-sm font-medium text-gray-700">Select Role</label>
             <select id="role" name="role" class="block w-full mt-1 p-2 border rounded-md">
-                <option value="passenger" {{ old('role') == 'passenger' ? 'selected' : '' }}>Passenger</option>
-                <option value="driver" {{ old('role') == 'driver' ? 'selected' : '' }}>Driver</option>
+                <option name="role_passenger"	 value="passenger" {{ old('role') == 'passenger' ? 'selected' : '' }}>Passenger</option>
+                <option name="role_driver" value="driver" {{ old('role') == 'driver' ? 'selected' : '' }}>Driver</option>
             </select>
         
             <x-input-error :messages="$errors->get('role')" class="mt-2" />
