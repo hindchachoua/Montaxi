@@ -41,13 +41,16 @@ class RegisteredUserController extends Controller
             'email' => $request->email,
             'password' => Hash::make($request->password),
         ]);
-        if ($request->has('role_driver')) {
-            $user->assignRole('driver');
-        }
+        $selectedRole = $request->input('role');
 
-        if ($request->has('role_passenger')) {
-            $user->assignRole('passenger');
-        }
+            if ($selectedRole == 'driver') {
+                $user->assignRole('driver');
+            } elseif ($selectedRole == 'passenger') {
+                $user->assignRole('passenger');
+            } elseif ($selectedRole == 'admin') {
+                $user->assignRole('admin');
+            }
+        
           
 
         event(new Registered($user));

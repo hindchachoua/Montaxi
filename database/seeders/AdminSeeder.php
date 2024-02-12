@@ -17,10 +17,10 @@ class AdminSeeder extends Seeder
     public function run(): void
     {
         $user = User::create([
-        'name' => 'admin',
-        'email' => 'admin@gmail.com',
-        'email_verified_at' => now(),
-        'password' => bcrypt('admin123'),
+        // 'name' => 'admin',
+        // 'email' => 'admin@gmail.com',
+        // 'email_verified_at' => now(),
+        // 'password' => bcrypt('admin123'),
     ]);
     $user->assignRole('passenger', 'admin', 'driver');
     }

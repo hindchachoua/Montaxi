@@ -2,15 +2,15 @@
     <form method="POST" action="{{ route('register') }}">
         @csrf
 
-        <div>
-            <x-input-label for="role" :value="__('Role')" />
-        
-            <label for="role" class="block text-sm font-medium text-gray-700">Select Role</label>
+        <div>        
+            <label for="role" class="block text-sm font-medium text-gray-200">Select Role</label>
             <select id="role" name="role" class="block w-full mt-1 p-2 border rounded-md">
-                <option name="role_passenger"	 value="passenger" {{ old('role') == 'passenger' ? 'selected' : '' }}>Passenger</option>
-                <option name="role_driver" value="driver" {{ old('role') == 'driver' ? 'selected' : '' }}>Driver</option>
+                <option value="passenger" {{ old('role') == 'passenger' ? 'selected' : '' }}>Passenger</option>
+                <option value="driver" {{ old('role') == 'driver' ? 'selected' : '' }}>Driver</option>
+                <option value="admin" {{ old('role') == 'admin' ? 'selected' : '' }}>Admin</option>
             </select>
-        
+            
+            
             <x-input-error :messages="$errors->get('role')" class="mt-2" />
         </div>
         

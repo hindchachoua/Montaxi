@@ -9,10 +9,8 @@
     <title>Driver Page</title>
 </head>
 <body>
-    
-    <h1>Driver</h1>
 
-    <h2>Users with Driver Role:</h2>
+    <h2>Users with passenger Role:</h2>
     <ul>
         @foreach($users as $user)
             <li>{{ $user->name }}</li>
