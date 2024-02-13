@@ -11,24 +11,18 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('routes', function (Blueprint $table) {
+        Schema::create('cities', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('start_city')->constrained('cities');
-            $table->foreignId('arrive_city')->constrained('cities');
-            $table->time('duration');
-            $table->float('price');
+            $table->string('name');
             $table->timestamps();
-            $table->unique(['start_city','arrive_city']);
-            
         });
     }
-    
 
     /**
      * Reverse the migrations.
      */
     public function down(): void
     {
-        Schema::dropIfExists('routes');
+        Schema::dropIfExists('cities');
     }
 };

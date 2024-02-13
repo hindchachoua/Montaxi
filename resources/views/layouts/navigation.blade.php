@@ -32,7 +32,7 @@
                 @else
                     @role('passenger')
                         <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                            <x-nav-link style="color: rgb(255, 255, 255); font-weight:bold; font-size: 1rem" :href="route('passenger.index')" :active="request()->routeIs('passenger.index')">
+                            <x-nav-link style="color: rgb(255, 255, 255); font-weight:bold; font-size: 1rem" :href="route('passenger.home')" :active="request()->routeIs('passenger.home')">
                                 {{ __('Passenger') }}
                             </x-nav-link>
                         </div>

@@ -37,9 +37,13 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->group(function () {
     Route::get('/' , [IndexController::class , 'index'])->name('index');
-    // Route::resource('/roles' , RolesController::class);
-    // Route::resource('/permissions' , PermissionController::class);
+    Route::resource('/passengers' , PassengerController::class);
+    Route::resource('/permissions' , PermissionController::class);
 });
+
+Route::get('/passengers/{user}/edit', [PassengerController::class, 'edit'])->name('passengers.edit');
+
+// Route::get('/admin',[RolesController::class ,'index'])->name('admin.index');
 
 // Route::get('/driver/dashboard', function () {    
 //      return view('driver.dashboard');
@@ -47,15 +51,18 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
 
 Route::middleware(['auth', 'role:driver'])->name('driver.')->prefix('driver')->group(function () {
     Route::get('/' , [DriverController::class , 'index'])->name('index');
-Route::get('/driver', [DriverController::class, 'index']);
-
+    Route::get('/driver', [DriverController::class, 'index']);
+    Route::get('/completeprofile', [DriverController::class, 'completeprofile'])->name('completeprofile');
 });
+
 
 
 // Route::get('/driver',[DriverController::class ,'index'])->name('driver.index');
 Route::middleware(['auth', 'role:passenger'])->name('passenger.')->prefix('passenger')->group(function () {
-    Route::get('/' , [PassengerController::class , 'index'])->name('index');
+    Route::get('/' , [PassengerController::class , 'home'])->name('home');
 });
+
+
 // Route::get('/driver', [DriverController::class, 'showUsersWithDriverRole']);
 
 require __DIR__.'/auth.php';
