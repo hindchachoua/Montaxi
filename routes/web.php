@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Admin\PermissionController;
 use App\Http\Controllers\DriverController;
 use App\Http\Controllers\passengerController;
+use App\Http\Controllers\HoraireController;
 
 
 /*
@@ -37,11 +38,17 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->group(function () {
     Route::get('/' , [IndexController::class , 'index'])->name('index');
+    
+    Route::get('/drivers' , [DriverController::class , 'showUsersWithDriverRole'])->name('drivers.index');
     Route::resource('/passengers' , PassengerController::class);
-    Route::resource('/permissions' , PermissionController::class);
+
+    Route::get('/passengers/{user}/edit', [PassengerController::class, 'edit'])->name('passengers.edit');
+
+    Route::delete('/drivers/{user}', [DriverController::class, 'destroy'])->name('drivers.destroy');
+
+
 });
 
-Route::get('/passengers/{user}/edit', [PassengerController::class, 'edit'])->name('passengers.edit');
 
 // Route::get('/admin',[RolesController::class ,'index'])->name('admin.index');
 
@@ -49,11 +56,23 @@ Route::get('/passengers/{user}/edit', [PassengerController::class, 'edit'])->nam
 //      return view('driver.dashboard');
 // })->middleware(['auth','role:driver'])->name('driver.dashboard');
 
-Route::middleware(['auth', 'role:driver'])->name('driver.')->prefix('driver')->group(function () {
-    Route::get('/' , [DriverController::class , 'index'])->name('index');
+Route::middleware(['auth', 'role:driver'])->prefix('driver')->group(function () {
+    Route::get('/' , [DriverController::class , 'index'])->name('driver.index');
     Route::get('/driver', [DriverController::class, 'index']);
-    Route::get('/completeprofile', [DriverController::class, 'completeprofile'])->name('completeprofile');
+    Route::get('/completeprofile', [DriverController::class, 'completeprofile'])->name('driver.completeprofile');
+    Route::resource('/horaire', HoraireController::class); 
+    Route::get('/addhoraire', [HoraireController::class, 'create'])->name('driver.addhoraire');
+
+    
+Route::put('/{user}/update', [DriverController::class ,'updateuser'])->name('driver.update');
+
+Route::put('/{user}/updatestatus', [DriverController::class ,'updatestatus'])->name('driver.updatestatus');
+    // Route::put('/{user}/update', [DriverController::class ,'updateuser'])->name('driver.update');
 });
+
+
+
+
 
 
 

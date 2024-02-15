@@ -19,14 +19,14 @@
     </head>
     <body class="font-sans antialiased" style="background-image: linear-gradient(to left, rgb(210, 210, 210), rgb(171, 87, 199));">
     
+        @include('layouts.navigation')
 
-    <div class="container">
+    <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-8">
                 <div class="card">
-                    <div class="card-header">{{ __('Drivers') }}</div>
 
-                    @if (empty($user->phone) || empty($user->profilepicture) || empty($user->description) || empty($user->immatriculation) || empty($user->car_type) || empty($user->payment))
+                    @if ($profileIncomplete)
                     <div>
                         <div class="alert alert-success" role="alert">
                           <h4 class="alert-heading">complete your profile</h4>
@@ -35,8 +35,65 @@
                           <a class="btn btn-primary" href="{{ route('driver.completeprofile')}}">complete your profile</a>
                         </div>
                     </div>
+
                         
-                    @endif
+                    @else
+                    
+                        <div class="card-body alert alert-success"  >
+                            <h1>your profile is complete</h1>
+
+                        </div>
+                </div>
+                <div class="">
+                    <div class="d-flex justify-content-between align-items-center my-5 mx-4">
+                        <a href="{{ route('driver.addhoraire') }}" class="btn bg-blue-800 text-white p-2 rounded">
+                            Add Horaire
+                        </a>
+                    
+                        <div>
+                            <h1 style="font-family: bold; font-size: 30px">Status</h1>
+                            <form action="{{ route('driver.updatestatus', $user->id)}}" method="POST" class="d-flex align-items-center">
+                                @csrf
+                                @method('PUT')
+                                <select name="status" id="status" onchange="this.form.submit()" class="mx-2">
+                    
+                                    <option value="available" {{ ($user->status == 'available') ? 'selected' : '' }}> Available</option>
+                                    <option value="driving" {{ ($user->status == 'driving') ? 'selected' : '' }}> Driving</option>                                    
+                                    <option value="unavailable" {{ ($user->status == 'unavailable') ? 'selected' : '' }}> Unavailable</option>
+                    
+                                </select>
+                            </form>
+                        </div>
+                    </div>
+                    
+                        <div>
+                            <h1 style="font-family: bold; font-size: 50px; text-align: center; text-decoration: underline; margin-bottom: 20px">Your Schedules</h1>
+                            
+                            @if($horaires->isEmpty())
+                            <div class="card">
+                                <div class="card-body">
+                                    <p class="alert alert-info">No horaires added yet.</p>
+                                </div>
+                            </div>
+                        @else
+                            <div class="row row-cols-1 row-cols-md-2 g-4 " style="margin-bottom: 20px">
+                                @foreach ($horaires as $horaire)
+                                    <div class="col">
+                                        <div class="card">
+                                            <div class="card-body">
+                                                <h5 class="card-title">Date: {{ $horaire->date }}</h5>
+                                                <p class="card-text">Available Seats: {{ $horaire->available_seats }}</p>
+                                                <p class="card-text">Route: {{ $horaire->getStartCityNameAttribute() }} to {{ $horaire->getEndCityNameAttribute() }}</p>
+                                                <p>price: {{ $horaire->getpriceAttribute() }} DH</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                @endforeach
+                            </div>
+                        @endif
+                        
+                        </div>
+@endif
                 
                 
 

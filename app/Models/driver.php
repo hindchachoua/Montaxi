@@ -6,20 +6,24 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Spatie\Permission\Traits\HasRoles;
 
-class driver extends Model
+class driver extends User
 {
     use HasFactory , HasRoles;
-    protected $fillable = [
-        'name', 
-        'email', 
-        'password',
-        'role' => 'driver',
-        'profilepicture',
-        'phone',
-        'description',
-        'immatriculation',
-        'car_type',
-        'payment',
-        'status',
-    ];
+
+    // protected $table = 'users'; 
+    // protected $fillable = [
+    //     'name',
+    //     'email',
+    //     'password',
+    //     'profilepicture',
+    //     'phone',
+    //     'description',
+    //     'immatriculation',
+    //     'car_type',
+    //     'payment',
+    //     'status',
+    // ];
+    
+
+    
 }

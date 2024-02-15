@@ -16,7 +16,7 @@
                             </tr>
                         </thead>
                         <tbody>
-                            @foreach($usersWithPassenRole as $user)
+                            @foreach($usersWithDriverRole as $user)
                                 @if(!$user->hasRole('admin'))
                                     <tr>
                                         <td><img src="{{ $user->profilepicture }}" alt="{{ $user->name }}" class="rounded-full h-8 w-8"></td>
@@ -25,11 +25,11 @@
                                         <td>{{ $user->phone }}</td>
                                         <td>{{ $user->description }}</td>
                                         <td>
-                                            <button type="button" class="btn btn-success"><a href="{{ route('admin.passengers.edit', $user->id) }}">Edit</a></button>
-                                            <form action="{{ route('admin.passengers.destroy', $user->id) }}" method="POST">
+                                            <button type="button" class="btn btn-success"><a href="">Edit</a></button>
+                                            <form action="{{ route('admin.drivers.destroy', $user) }}" method="POST">
                                                 @csrf
                                                 @method('DELETE')
-                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                                <button type="submit" class="btn btn-danger">Archive</button>
                                             </form>
                                         </td>
                                     </tr>

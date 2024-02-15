@@ -18,7 +18,7 @@
     <body class="font-sans antialiased" style="background-image: linear-gradient(to left, rgb(210, 210, 210), rgb(171, 87, 199));">
 
         <div class="max-w-7xl mx-auto py-6 px-4 " >
-            <form action="" method="post" enctype="multipart/form-data">
+            <form action="{{ route('driver.update', $user->id) }}" method="post" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
     
@@ -56,7 +56,7 @@
                 </div>
                 <div>
                     <label class="form-label" style="font-family: Georgia, serif;">payment</label>
-                    <input class="form-control" type="checkbox" name="payment" placeholder="payment" value="{{ $user->payment }}">
+                    <input class="form-control" type="text" name="payment" placeholder="payment" value="{{ $user->payment }}">
                 </div>
                 <div>
                     <label class="form-label" style="font-family: Georgia, serif;">New Image for profile</label>
