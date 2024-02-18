@@ -36,6 +36,16 @@
                                 {{ __('Passenger') }}
                             </x-nav-link>
                         </div>
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <x-nav-link style="color: rgb(255, 255, 255); font-weight:bold; font-size: 1rem" :href="route('passenger.myreservation')" :active="request()->routeIs('passenger.myreservation')">
+                                {{ __('My Reservations') }}
+                            </x-nav-link>
+                        </div>
+                        <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
+                            <x-nav-link style="color: rgb(255, 255, 255); font-weight:bold; font-size: 1rem" :href="route('passenger.myhistory')" :active="request()->routeIs('passenger.myhistory')">
+                                {{ __('My History') }}
+                            </x-nav-link>
+                        </div>
                     @endrole
                 @endrole
             @endrole

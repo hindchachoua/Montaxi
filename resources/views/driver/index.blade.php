@@ -1,5 +1,3 @@
-<!-- resources/views/driver/index.blade.php -->
-
 <!DOCTYPE html>
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
     <head>
@@ -24,25 +22,20 @@
     <div class="container mt-5">
         <div class="row justify-content-center">
             <div class="col-md-8">
-                <div class="card">
+                <div class="card" style="background-color: rgba(84, 0, 99, 0.211)">
 
                     @if ($profileIncomplete)
-                    <div>
+                    <div class="card-body" style="margin-bottom: 50px">
                         <div class="alert alert-success" role="alert">
-                          <h4 class="alert-heading">complete your profile</h4>
+                          <h4 class="alert-heading" style="text-decoration: underline; font-weight: bold; margin-bottom: 20px">complete your profile:</h4>
                           <p>click on the button below to complete your profile</p>
-                          <hr>
-                          <a class="btn btn-primary" href="{{ route('driver.completeprofile')}}">complete your profile</a>
+                          <hr style="margin-top: 20px">
+                          <a class="btn btn-primary" style="margin-top: 30px" href="{{ route('driver.completeprofile')}}">complete your profile</a>
                         </div>
                     </div>
 
                         
                     @else
-                    
-                        <div class="card-body alert alert-success"  >
-                            <h1>your profile is complete</h1>
-
-                        </div>
                 </div>
                 <div class="">
                     <div class="d-flex justify-content-between align-items-center my-5 mx-4">
@@ -81,10 +74,16 @@
                                     <div class="col">
                                         <div class="card">
                                             <div class="card-body">
-                                                <h5 class="card-title">Date: {{ $horaire->date }}</h5>
-                                                <p class="card-text">Available Seats: {{ $horaire->available_seats }}</p>
-                                                <p class="card-text">Route: {{ $horaire->getStartCityNameAttribute() }} to {{ $horaire->getEndCityNameAttribute() }}</p>
-                                                <p>price: {{ $horaire->getpriceAttribute() }} DH</p>
+                                                <h1 class="text-center" style="font-size: 30px; color: rgb(0, 104, 17); font-weight: bold">{{ $horaire->route->startcity->name }} to {{ $horaire->route->endcity->name }}</h1>
+                                                <h5 class="card-title text-center mt-2" style="font-weight: bold; text-decoration: underline">Date: {{ $horaire->date }} </h5>
+                                                <h1 class="card-text" style=" text-decoration: underline">Available Seats: </h1>
+                                                <p class="card-text ml-3">{{ $horaire->available_seats }}</p>
+                                                <div style="margin-left: 85%">
+                                                <h1 style="font-weight: bold; text-decoration: underline">price: </h1>
+                                                <p class="card-text" style="font-weight: bold;">{{ $horaire->getpriceAttribute() }} DH</p>
+                                                </div>
+                                                <img src="{{ asset('storage/images/route.png') }}" alt="">
+                                                {{-- <a href="{{ route('horaire.edit', $horaire->id) }}" class="btn btn-primary" style="margin-left: 80%">Pause</a> --}}
                                             </div>
                                         </div>
                                     </div>
@@ -93,11 +92,15 @@
                         @endif
                         
                         </div>
-@endif
+                    @endif
                 
                 
+                </div>
+            </div>
+        </div>
+    </div>
 
-
+    @include('layouts.footer')
 
 
 

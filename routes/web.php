@@ -46,8 +46,10 @@ Route::middleware(['auth', 'role:admin'])->name('admin.')->prefix('admin')->grou
 
     Route::delete('/drivers/{user}', [DriverController::class, 'destroy'])->name('drivers.destroy');
 
+ Route::post('/passengers/{user}', [passengerController::class, 'destroy'])->name('passengers.destroy');
 
 });
+
 
 
 // Route::get('/admin',[RolesController::class ,'index'])->name('admin.index');
@@ -77,9 +79,20 @@ Route::put('/{user}/updatestatus', [DriverController::class ,'updatestatus'])->n
 
 
 // Route::get('/driver',[DriverController::class ,'index'])->name('driver.index');
+// web.php
+
 Route::middleware(['auth', 'role:passenger'])->name('passenger.')->prefix('passenger')->group(function () {
     Route::get('/' , [PassengerController::class , 'home'])->name('home');
+    Route::get('/myreservation' , [PassengerController::class , 'myreservation'])->name('myreservation');
+    Route::put('/{booking}/updatestatus', [PassengerController::class ,'cancelReservation'])->name('updatestatus');
+
+    Route::get('/myhistory' , [PassengerController::class , 'myhistory'])->name('myhistory');
+
+    Route::post('/search', [PassengerController::class, 'search'])->name('search');
+
 });
+
+Route::post('/passenger/reserve/{horaire}', [PassengerController::class, 'reserve'])->name('passenger.reserve');
 
 
 // Route::get('/driver', [DriverController::class, 'showUsersWithDriverRole']);

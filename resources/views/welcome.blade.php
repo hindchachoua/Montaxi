@@ -56,8 +56,7 @@
                         <p>Are you looking for a reliable and professional taxi service? Look no further! [Mon Grand Taxi] is here to provide you with top-notch transportation solutions. Our dedicated team of experienced and courteous taxi drivers is committed to ensuring a safe and comfortable journey for every passenger.</p>
                         <div class="main-button scroll-to-section"><a href="#services">Discover More</a></div>
                         <span>or</span>
-                        <div class="second-button"><a href="faqs.html">Check our FAQs</a></div>
-                        <button type="button" class="btn btn-warning">Warning</button>
+                        <div class="second-button"><a href="">Check our FAQs</a></div>
                       </div>
                     </div>
                     <div class="col-lg-5 " style="margin-top: 100px;">

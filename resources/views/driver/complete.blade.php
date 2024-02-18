@@ -16,6 +16,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans antialiased" style="background-image: linear-gradient(to left, rgb(210, 210, 210), rgb(171, 87, 199));">
+        @include('layouts.navigation')
 
         <div class="max-w-7xl mx-auto py-6 px-4 " >
             <form action="{{ route('driver.update', $user->id) }}" method="post" enctype="multipart/form-data">
@@ -68,6 +69,7 @@
             </form>
         </div>
     
+        @include('layouts.footer')
 
         <script src="vendor/bootstrap/js/bootstrap.min.js"></script>
     </body>

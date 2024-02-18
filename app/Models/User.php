@@ -9,6 +9,7 @@ use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
 use Spatie\Permission\Traits\HasRoles;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 
 
 class User extends Authenticatable
@@ -58,4 +59,8 @@ class User extends Authenticatable
         return $this->hasOne(Driver::class, 'user_id', 'id');
     }
 
+    public function Bookings(): HasMany
+    {
+        return $this->hasMany(Bookings::class, 'passenger_id', 'id');
+    }
 }

@@ -38,5 +38,4 @@ class HoraireController extends Controller
         return redirect(route('driver.index'));
     }
     
-    
 }

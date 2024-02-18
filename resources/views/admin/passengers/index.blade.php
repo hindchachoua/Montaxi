@@ -28,8 +28,8 @@
                                             <button type="button" class="btn btn-success"><a href="{{ route('admin.passengers.edit', $user->id) }}">Edit</a></button>
                                             <form action="{{ route('admin.passengers.destroy', $user->id) }}" method="POST">
                                                 @csrf
-                                                @method('DELETE')
-                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                                @method('POST')
+                                                <button type="submit" class="btn btn-danger">Archive</button>
                                             </form>
                                         </td>
                                     </tr>
@@ -42,3 +42,5 @@
         </div>
     </div>
 </x-admin-layout>
+
+@include('layouts.footer')
