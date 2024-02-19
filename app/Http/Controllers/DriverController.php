@@ -13,15 +13,14 @@ class DriverController extends Controller
     public function index()
     {
         $user = Auth::user();
-        // Retrieve users with the 'driver' role
+        
         $usersWithDriverRole = User::role('driver')->get();
 
         $profileIncomplete = empty($user->phone) || empty($user->description) || empty($user->immatriculation) || empty($user->car_type) || empty($user->payment);
 
-        // Retrieve horaires for the authenticated driver
+        
         $horaires = horaires::where('driver_id', $user->id)->get();
 
-        // Pass the users and horaires to the view
         return view('driver.index', ['user' => $user, 'profileIncomplete' => $profileIncomplete, 'horaires' => $horaires]);
     }
 

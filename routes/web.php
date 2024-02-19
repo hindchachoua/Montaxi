@@ -79,7 +79,6 @@ Route::put('/{user}/updatestatus', [DriverController::class ,'updatestatus'])->n
 
 
 // Route::get('/driver',[DriverController::class ,'index'])->name('driver.index');
-// web.php
 
 Route::middleware(['auth', 'role:passenger'])->name('passenger.')->prefix('passenger')->group(function () {
     Route::get('/' , [PassengerController::class , 'home'])->name('home');
