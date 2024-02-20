@@ -21,8 +21,21 @@ class Bookings extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function passenger()
+    {
+        return $this->belongsTo(User::class, 'passenger_id', 'id');
+    }
+
     public function horaire()
     {
-        return $this->belongsTo(horaires::class);
+        return $this->belongsTo(horaires::class, 'schedule_id');
     }
+
+    public function schedule(){
+
+        return $this->belongsTo(horaires::class, 'schedule_id');
+    }
+
+    
+
 }

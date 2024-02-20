@@ -19,10 +19,10 @@
     
         @include('layouts.navigation')
 
-        <form action="{{ route('passenger.search')}}" method="POST" class="max-w-md mx-auto bg-white p-6 rounded-md shadow-md">
+        <form action="{{ route('passenger.search')}}" method="POST" class="max-w-md mx-auto bg-white p-6 rounded-md shadow-md mt-10">
             @csrf    
             <div class="mb-4">
-                <label for="route" class="block text-sm font-medium text-gray-600">route:</label>
+                <label for="route" class="block text-sm font-medium text-gray-600" style="font-family: 'Times New Roman', Times, serif">route:</label>
                 <select name="route_id" required class="mt-1 p-2 border rounded-md w-full">
                     @foreach ($Routes as $item)
                         <option value="{{ $item->id }}">{{ $item->startcity->name }} to {{ $item->endcity->name }}</option>
@@ -31,7 +31,7 @@
                 </select>
             </div>
             <div class="mb-4">
-                <label for="date" class="block text-sm font-medium text-gray-600">date:</label>
+                <label for="date" class="block text-sm font-medium text-gray-600" style="font-family: 'Times New Roman', Times, serif">date:</label>
                 <input type="date" name="date" required class="mt-1 p-2 border rounded-md w-full">
             </div>
             <div class="mb-4 flex justify-center">
@@ -58,12 +58,12 @@
                     <div class="col">
                         <div class="card " style="background-color: rgba(255, 255, 255, 0.452)">
                             <div class="card-body" style="background-color: rgba(84, 0, 99, 0.358); width: 50%; height: 50%;margin-left: 25%">
-                                <h1 class="text-center" style="font-size: 30px; color: rgb(0, 104, 17); font-weight: bold">{{ $horaire->route->startcity->name }} to {{ $horaire->route->endcity->name }}</h1>
+                                <h1 class="text-center" style="font-size: 30px; color: rgb(0, 104, 17); font-weight: bold;font-family: 'Times New Roman', Times, serif">{{ $horaire->route->startcity->name }} to {{ $horaire->route->endcity->name }}</h1>
                                 <h5 class="card-title text-center mt-2" style="font-weight: bold; text-decoration: underline">Date: {{ $horaire->date }} </h5>
-                                <h1 class="card-text" style=" text-decoration: underline">Available Seats: </h1>
-                                <p class="card-text ml-3">{{ $horaire->available_seats }}</p>
+                                <h1 class="card-text" style=" text-decoration: underline; font-family: 'Times New Roman', Times, serif">Available Seats: </h1>
+                                <p class="card-text ml-3" style="font-family: 'Times New Roman', Times, serif">{{ $horaire->available_seats }}</p>
                                 <div style="margin-left: 85%">
-                                <h1 style="font-weight: bold; text-decoration: underline">price: </h1>
+                                <h1 style="font-weight: bold; text-decoration: underline;font-family: 'Times New Roman', Times, serif">price: </h1>
                                 <p class="card-text" style="font-weight: bold;">{{ $horaire->getpriceAttribute() }} DH</p>
                                 </div>
                                 <img src="{{ asset('storage/images/route.png') }}" alt="">
@@ -71,12 +71,12 @@
                                 {{-- <a href="{{ route('horaire.edit', $horaire->id) }}" class="btn btn-primary" style="margin-left: 80%">Pause</a> --}}
                                 
                                 @if ( $horaire->available_seats == 0)
-                                    <p class="alert alert-danger">No available seats</p>
+                                    <p class="alert alert-danger" style="font-family: 'Times New Roman', Times, serif">No available seats</p>
                                     
                                 @else
                                 <form action="{{ route('passenger.reserve', $horaire->id) }}" method="POST">
                                     @csrf
-                                    <button type="submit" class="btn btn-success mt-2">Reserve</button>
+                                    <button type="submit" class="btn btn-success mt-2" style="font-family: 'Times New Roman', Times, serif">Reserve</button>
                                 </form>  
                                 @endif
                                 

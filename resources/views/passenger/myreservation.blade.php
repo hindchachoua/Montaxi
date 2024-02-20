@@ -19,32 +19,38 @@
     
         @include('layouts.navigation')
         
-        <h1 class="text-center mt-5" style="font-size: 50px; color: rgb(0, 0, 0); font-weight: bold">Your Reservation:</h1>
+        <h1 class="text-center mt-5" style="font-size: 50px; color: rgb(0, 0, 0); font-weight: bold;font-family: 'Times New Roman', Times, serif">Your Reservation:</h1>
 
-        <div>
+        <div class="container " style="justify-content: space-between; display: flex; flex-wrap: wrap;">
             @if ($bookings->isEmpty())
                 <div class="card mt-5 mb-5 p-5 text-center shadow bg-white rounded md bg-white p-6 rounded-md shadow-md dark:bg-gray-800 dark:border-gray-700 ">
-                    <p class="alert alert-info">No bookings added yet.</p>
+                    <p class="alert alert-info" style="font-family: 'Times New Roman', Times, serif">No bookings added yet.</p>
                 </div>
                 
             @endif
-            <div class="card-group">
             @foreach ($bookings as $booking)
         
+            <div class="card-group">
             <div class="card mb-3 mt-5 p-5 text-center shadow bg-white rounded md bg-white p-6 rounded-md shadow-md dark:bg-gray-800 dark:border-gray-700 ">
               <img src="{{ asset('storage/images/route.png  ') }}" class="card-img-top"
                 alt="historique" style="height: 200px; width: 100%; object-fit: cover; object-position: center;"  />
               <div class="card-body">
-                {{-- <h5 class="card-title">{{ $booking->schedule_id }} </h5>
-                <p class="card-text">
+                {{-- <h5 class="card-title">{{ $booking->}} to {{ $booking->getEndCityNameAttribute }} </h5>
+                <p class="card-text"> --}}
                     {{ $booking->horaire_id }} 
-                </p> --}}
-                {{-- <p class="card-text">
-                    {{ $booking->passenger_id }}
-                </p> --}}
-                <p class="card-text">
-                  <small class="text-muted"> {{ $booking->created_at }} </small>
                 </p>
+                <p class="card-text" style="font-family: 'Times New Roman', Times, serif">
+                  Your Name:  {{ $booking->passenger->name }}
+                </p>
+                <p class="card-text" style="font-family: 'Times New Roman', Times, serif"><a href="">
+                  Name of Driver: {{ optional($booking->horaire->driver_taxi)->name ?? 'No Driver'}}
+                </a>
+              </p>
+                <p class="card-text">
+                  <small class="text-muted">Date of Order: {{ $booking->created_at }} </small>
+                </p>
+
+                <h3 style="margin-top: 20px; text-decoration: underline; margin-bottom: 10px;font-family: 'Times New Roman', Times, serif; font-weight: bold">Status:</h3>
                 <form action="{{ route('passenger.updatestatus', $booking->id) }}" method="POST">
                     @csrf
                     @method('PUT')
@@ -52,15 +58,17 @@
                     <option value="active" {{ ($booking->status == 'active') ? 'selected' : '' }}>{{ $booking->status }}</option>
                     <option value="canceled" {{ ($booking->status == 'canceled') ? 'selected' : '' }}>canceled</option>
                     {{-- <option value="valid" {{ ($booking->status == 'valid') ? 'selected' : '' }}>valid</option> --}}
+
                     </select>
                 </form>
               </div>
             </div>
             
           
-        </div>
+        
+          </div>
           @endforeach
-        </div>
+          
         </div>
 
        

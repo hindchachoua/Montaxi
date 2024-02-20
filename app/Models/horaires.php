@@ -52,4 +52,8 @@ public function route()
         return $this->route->price;
     }
     
+    public function driver()
+    {
+        return $this->belongsTo(User::class, 'user_id');
+    }
 }

@@ -12,37 +12,37 @@
 
                 <!-- Navigation Links -->
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link style="color: rgb(255, 255, 255); font-size: 1rem" :href="route('dashboard')" :active="request()->routeIs('dashboard')">
+                    <x-nav-link style="color: rgb(255, 255, 255); font-size: 1rem; font-family: 'Times New Roman', Times, serif" :href="route('dashboard')" :active="request()->routeIs('dashboard')">
                         {{ __('Dashboard') }}
                     </x-nav-link>
                 </div>
                 @role('admin')
                 <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                    <x-nav-link style="color: rgb(255, 255, 255)" :href="route('admin.index')" :active="request()->routeIs('admin.index')">
+                    <x-nav-link style="color: rgb(255, 255, 255);font-family: 'Times New Roman', Times, serif" :href="route('admin.index')" :active="request()->routeIs('admin.index')">
                         {{ __('Admin') }}
                     </x-nav-link>
                 </div>
             @else
                 @role('driver')
                     <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                        <x-nav-link style="color: rgb(78, 0, 104)" :href="route('driver.index')" :active="request()->routeIs('driver.index')">
+                        <x-nav-link style="color: rgb(255, 255, 255); font-family: 'Times New Roman', Times, serif" :href="route('driver.index')" :active="request()->routeIs('driver.index')">
                             {{ __('Driver') }}
                         </x-nav-link>
                     </div>
                 @else
                     @role('passenger')
                         <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                            <x-nav-link style="color: rgb(255, 255, 255); font-weight:bold; font-size: 1rem" :href="route('passenger.home')" :active="request()->routeIs('passenger.home')">
+                            <x-nav-link style="color: rgb(255, 255, 255); font-weight:bold; font-size: 1rem;font-family: 'Times New Roman', Times, serif" :href="route('passenger.home')" :active="request()->routeIs('passenger.home')">
                                 {{ __('Passenger') }}
                             </x-nav-link>
                         </div>
                         <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                            <x-nav-link style="color: rgb(255, 255, 255); font-weight:bold; font-size: 1rem" :href="route('passenger.myreservation')" :active="request()->routeIs('passenger.myreservation')">
+                            <x-nav-link style="color: rgb(255, 255, 255); font-weight:bold; font-size: 1rem; font-family: 'Times New Roman', Times, serif" :href="route('passenger.myreservation')" :active="request()->routeIs('passenger.myreservation')">
                                 {{ __('My Reservations') }}
                             </x-nav-link>
                         </div>
                         <div class="hidden space-x-8 sm:-my-px sm:ms-10 sm:flex">
-                            <x-nav-link style="color: rgb(255, 255, 255); font-weight:bold; font-size: 1rem" :href="route('passenger.myhistory')" :active="request()->routeIs('passenger.myhistory')">
+                            <x-nav-link style="color: rgb(255, 255, 255); font-weight:bold; font-size: 1rem; font-family: 'Times New Roman', Times, serif" :href="route('passenger.myhistory')" :active="request()->routeIs('passenger.myhistory')">
                                 {{ __('My History') }}
                             </x-nav-link>
                         </div>
